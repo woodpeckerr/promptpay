@@ -1,0 +1,15 @@
+.ppy-input-desc {
+  padding-top: 4px;
+  padding-left: 4px;
+  color: #afafaf;
+}
+
+.ppy-qrcode {
+  max-width: 340px;
+  max-height: 340px;
+}
+
+.ppy-qrcode svg {
+  width: 100%;
+  height: 100%;
+}

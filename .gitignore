@@ -1,0 +1,17 @@
+# IDE
+.idea
+.vscode
+
+# dependency
+bower_components
+node_modules
+
+# dist
+*.min.js
+
+# log
+*.log
+
+# lock
+yarn.lock
+package-lock.json

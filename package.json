@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build.watch": "webpack js/main.js js/main.min.js -d --watch",
+    "build.prod": "webpack js/main.js js/main.min.js -p"
+  },
+  "dependencies": {
+    "promptpay-qr": "^0.4.3",
+    "qrcode": "^0.9.0",
+    "webpack": "^3.5.6"
+  }
+}
