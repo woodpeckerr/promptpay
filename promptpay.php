@@ -170,7 +170,11 @@ class PromptPay {
   }
 
   public function print_section_info() {
-    print 'Enter your settings below:';
+    printf('%s<br>%s<pre>%s</pre>',
+      'Enter your settings below',
+      'and using display it by shortcode',
+      '[promptpayqr]'
+    );
   }
 
   /** ================================================================ backend: field
