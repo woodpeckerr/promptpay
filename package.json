@@ -4,6 +4,10 @@
     "build.prod": "webpack js/main.js js/main.min.js -p"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-zip": "^4.0.0",
     "promptpay-qr": "^0.4.3",
     "qrcode": "^0.9.0",
     "webpack": "^3.5.6"

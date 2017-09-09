@@ -9,6 +9,9 @@ node_modules
 # dist
 *.min.js
 
+# package
+promptpay-*
+
 # log
 *.log
 
