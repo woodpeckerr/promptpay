@@ -14,16 +14,25 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 define( 'PPY_BASE_FILE', plugin_basename( __FILE__ ) );
 define( 'PPY_PLUGIN_NAME', 'PromptPay' );
 
+// hack
+// @todo refactor
+class PromptPayFieldKey {
+  public function __construct() {
+    $this->field_promptpay_id = 'field_promptpay_id';
+  }
+}
+
 class PromptPay {
 
   public function __construct() {
-    $this->is_debug           = false;
+    $this->is_debug           = true;
     $this->menu_page          = 'promptpay';
     $this->option_group_name  = 'ppy_option_group';
     $this->option_field_name  = 'ppy_option_field';
     $this->setting_section_id = 'ppy_setting_section_id';
 
-    $this->options = get_option( $this->option_field_name );
+    $this->field_key = new PromptPayFieldKey();
+    $this->options   = get_option( $this->option_field_name );
 
     // set default prop
     // for only
@@ -108,7 +117,7 @@ class PromptPay {
     // option field(s)
     // - field_promptpay_id
     add_settings_field(
-      'field_promptpay_id',
+      $this->field_key->field_promptpay_id,
       'PromptPay ID',
       array( $this, 'field_promptpay_id_callback' ),
       $this->menu_page,
@@ -130,8 +139,8 @@ class PromptPay {
 
     $options = $this->options;
 
-    if ( ! isset( $options['field_promptpay_id'] ) ) {
-      $options['field_promptpay_id'] = '';
+    if ( ! isset( $options[$this->field_key->field_promptpay_id] ) ) {
+      $options[$this->field_key->field_promptpay_id] = '';
     }
 
     $this->options = $options;
@@ -149,7 +158,7 @@ class PromptPay {
 
     // text
     $text_input_ids = array(
-      'field_promptpay_id',
+      $this->field_key->field_promptpay_id,
     );
     foreach ( $text_input_ids as $text_input_id ) {
       $result[ $text_input_id ] = isset( $input[ $text_input_id ] )
@@ -168,7 +177,7 @@ class PromptPay {
    */
 
   public function field_promptpay_id_callback() {
-    $field_id    = 'field_promptpay_id';
+    $field_id    = $this->field_key->field_promptpay_id;
     $field_name  = $this->option_field_name . "[$field_id]";
     $field_value = $this->options[ $field_id ];
 
