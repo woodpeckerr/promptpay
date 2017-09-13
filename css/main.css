@@ -103,8 +103,7 @@
   background-color: whitesmoke;
   border: 1px solid #d0d0d0;
   font-size: 14px;
-  /*display: block;*/
-  display: none;
+  display: block;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
