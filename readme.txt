@@ -2,7 +2,7 @@
 
 Contributors: jojoee
 Donate link:
-Tags: payment, PromptPay, qrcode
+Tags: payment, PromptPay, qrcode, woocommerce
 Requires at least: 3.0.1
 Tested up to: 4.8.1
 Stable tag: 4.3
@@ -16,6 +16,11 @@ PromptPay integration for WordPress,  contract creator if any
 Features:
 
 * Shortcode
+* Support all Thai banks
+* Support all themes
+* Support all layouts / devices
+* Integration with BACS WooCommerce
+* No tracking
 
 Compatible with all browsers:
 
@@ -40,23 +45,67 @@ activate the plugin on your plugin dashboard (`/wp-admin/plugins.php`)
 
 1. Shortcode (screenshot-1.jpg)
 
+2. WooCommerce (screenshot-2.jpg)
+
 == Upgrade Notice ==
 
 Not available
 
 == Changelog ==
 
-= 1.0.0 (07 Sep 2016) =
+= 1.2.0 (13 Sep 2017) =
+* Integration with BACS WooCommerce
+
+= 1.1.0 (13 Sep 2017) =
+* Add more options
+
+= 1.0.0 (07 Sep 2017) =
 * First release
 
-== Notes ==
+== TODO ==
+
+* [x] Screenshot
+* [x] Integration with BACS WooCommerce
+* [x] Option: promptpay id
+* [ ] Option: amount
+* [x] Option: show promptpay logo
+* [x] Option: show promptpay id
+* [x] Option: account name
+* [x] Option: shop name
+* [x] Option: card style
+* [x] Option: integration with WooCommerce
+* [x] Shortcode
+* [ ] Shortcode: amount
+* [ ] Shortcode: show promptpay logo
+* [ ] Shortcode: show promptpay id
+* [ ] Shortcode: account name
+* [ ] Shortcode: shop name
+* [ ] Shortcode: 3 card styles
+* [ ] Shortcode: bank logo
+* [ ] Shortcode: customer logo
+* [ ] Pre-fill total (amount) on order-received page (WooCommerce)
+* [ ] Create demo shortcode page
+* [ ] Localization: Thai
+* [ ] Live preview Shortcode on admin page
+* [ ] Live preview: debounce when it's changed
+* [x] Live preview: live validate
+* [ ] Security: using PHP encode id into page then javascript decode it
+* [ ] Support on IE 7-8
+* [ ] Unit test: PHP
+* [ ] Unit test: Javascript
+* [ ] E2E test
+
+== Notes (dev) ==
 
 * [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards)
 * 2 spaces for indent
 * [Repository on Github](https://github.com/woodpeckerr/promptpay)
+* `yarn build.watch` to dev
+* `yarn build.prod && yarn zip` to build package
 
 = Thank you =
 * [WordPress Plugin readme.txt Validator](https://wordpress.org/plugins/about/validator/)
 * [Autoprefixer CSS online](https://autoprefixer.github.io/)
 * [PHP code syntax check](https://www.piliapp.com/php-syntax-check/)
 * [dtinth/promptpay-qr](https://github.com/dtinth/promptpay-qr)
+* Image and design from [Digio Merchant QR Generator](https://qr-generator.digio.co.th/)
