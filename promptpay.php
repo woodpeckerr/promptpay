@@ -3,7 +3,7 @@
 Plugin Name: PromptPay
 Plugin URI: https://wordpress.org/plugins/promptpay/
 Description: PromptPay integration for WordPress
-Version: 1.0.0
+Version: 1.1.0
 Author: Nathachai Thongniran
 Author URI: http://jojoee.com/
 Text Domain: ppy
@@ -18,14 +18,18 @@ define( 'PPY_PLUGIN_NAME', 'PromptPay' );
 // @todo refactor
 class PromptPayFieldKey {
   public function __construct() {
-    $this->field_promptpay_id = 'field_promptpay_id';
+    $this->field_promptpay_id        = 'field_promptpay_id';
+    $this->field_show_promptpay_logo = 'field_show_promptpay_logo';
+    $this->field_show_promptpay_id   = 'field_show_promptpay_id';
+    $this->field_account_name        = 'field_account_name';
+    $this->field_shop_name           = 'field_shop_name';
   }
 }
 
 class PromptPay {
 
   public function __construct() {
-    $this->is_debug           = true;
+    $this->is_debug           = false;
     $this->menu_page          = 'promptpay';
     $this->option_group_name  = 'ppy_option_group';
     $this->option_field_name  = 'ppy_option_field';
@@ -60,11 +64,22 @@ class PromptPay {
 
   public function shortcode_qrcode() {
     $options      = $this->options;
-    $promptpay_id = $options['field_promptpay_id'];
-    $amount       = 0;
-    $html         = sprintf( '<div class="ppy-card" data-promptpay-id="%s" data-amount="%f"></div>',
-      $promptpay_id,
-      $amount
+    $html         = sprintf( '<div class="ppy-card"
+      data-promptpay-id="%s"
+      data-amount="%f"
+      data-show-promptpay-logo="%s"
+      data-show-promptpay-id="%s"
+      data-account-name="%s"
+      data-shop-name="%s"
+      data-card-style="%s"
+      ></div>',
+      $options[ $this->field_key->field_promptpay_id ],
+      0,
+      $options[ $this->field_key->field_show_promptpay_logo ],
+      $options[ $this->field_key->field_show_promptpay_id ],
+      $options[ $this->field_key->field_account_name ],
+      $options[ $this->field_key->field_shop_name ],
+      1
     );
 
     return $html;
@@ -116,10 +131,42 @@ class PromptPay {
 
     // option field(s)
     // - field_promptpay_id
+    // - field_show_promptpay_logo
+    // - field_show_promptpay_id
+    // - field_account_name
+    // - field_shop_name
     add_settings_field(
       $this->field_key->field_promptpay_id,
       'PromptPay ID',
-      array( $this, 'field_promptpay_id_callback' ),
+      array( $this, $this->field_key->field_promptpay_id . '_callback' ),
+      $this->menu_page,
+      $this->setting_section_id
+    );
+    add_settings_field(
+      $this->field_key->field_show_promptpay_logo,
+      'Show PromptPay logo',
+      array( $this, $this->field_key->field_show_promptpay_logo . '_callback' ),
+      $this->menu_page,
+      $this->setting_section_id
+    );
+    add_settings_field(
+      $this->field_key->field_show_promptpay_id,
+      'Show PromptPay ID',
+      array( $this, $this->field_key->field_show_promptpay_id . '_callback' ),
+      $this->menu_page,
+      $this->setting_section_id
+    );
+    add_settings_field(
+      $this->field_key->field_account_name,
+      'Account name',
+      array( $this, $this->field_key->field_account_name . '_callback' ),
+      $this->menu_page,
+      $this->setting_section_id
+    );
+    add_settings_field(
+      $this->field_key->field_shop_name,
+      'Shop name',
+      array( $this, $this->field_key->field_shop_name . '_callback' ),
       $this->menu_page,
       $this->setting_section_id
     );
@@ -134,13 +181,32 @@ class PromptPay {
   public function set_default_prop() {
     // default
     // [
-    //   'field_promptpay_id' => ''
+    //   'field_promptpay_id'         => ''
+    //   'field_show_promptpay_logo'  => 1
+    //   'field_show_promptpay_id'    => 1
+    //   'field_account_name'         => ''
+    //   'field_shop_name'            => ''
     // ]
-
     $options = $this->options;
 
-    if ( ! isset( $options[$this->field_key->field_promptpay_id] ) ) {
-      $options[$this->field_key->field_promptpay_id] = '';
+    if ( ! isset( $options[ $this->field_key->field_promptpay_id ] ) ) {
+      $options[ $this->field_key->field_promptpay_id ] = '';
+    }
+
+    if ( ! isset( $options[ $this->field_key->field_show_promptpay_logo ] ) ) {
+      $options[ $this->field_key->field_show_promptpay_logo ] = 1;
+    }
+
+    if ( ! isset( $options[ $this->field_key->field_show_promptpay_id ] ) ) {
+      $options[ $this->field_key->field_show_promptpay_id ] = 1;
+    }
+
+    if ( ! isset( $options[ $this->field_key->field_account_name ] ) ) {
+      $options[ $this->field_key->field_account_name ] = '';
+    }
+
+    if ( ! isset( $options[ $this->field_key->field_shop_name ] ) ) {
+      $options[ $this->field_key->field_shop_name ] = '';
     }
 
     $this->options = $options;
@@ -159,6 +225,8 @@ class PromptPay {
     // text
     $text_input_ids = array(
       $this->field_key->field_promptpay_id,
+      $this->field_key->field_account_name,
+      $this->field_key->field_shop_name
     );
     foreach ( $text_input_ids as $text_input_id ) {
       $result[ $text_input_id ] = isset( $input[ $text_input_id ] )
@@ -166,13 +234,24 @@ class PromptPay {
         : '';
     }
 
+    // number
+    $number_input_ids = array(
+      $this->field_key->field_show_promptpay_logo,
+      $this->field_key->field_show_promptpay_id
+    );
+    foreach ( $number_input_ids as $number_input_id ) {
+      $result[ $number_input_id ] = isset( $input[ $number_input_id ] )
+        ? sanitize_text_field( $input[ $number_input_id ] )
+        : 0;
+    }
+
     return $result;
   }
 
   public function print_section_info() {
-    printf('%s<br>%s<pre>%s</pre>',
+    printf( '%s<br>%s<pre>%s</pre>',
       'Enter your settings below',
-      'and using display it by shortcode',
+      'and display it by shortcode',
       '[promptpayqr]'
     );
   }
@@ -185,12 +264,65 @@ class PromptPay {
     $field_name  = $this->option_field_name . "[$field_id]";
     $field_value = $this->options[ $field_id ];
 
-    printf( '<input type="text" id="%s" placeholder="PromptPay ID" name="%s" value="%s" />',
+    printf( '<input type="text" id="%s" placeholder="e.g. 1234567891234, 0841234567" name="%s" value="%s" />',
       $field_id,
       $field_name,
       $field_value
     );
-    printf( '<br><span class="ppy-input-desc">e.g. 1234567891234, 0841234567</span>' );
+  }
+
+  public function field_show_promptpay_logo_callback() {
+    $field_id    = $this->field_key->field_show_promptpay_logo;
+    $field_name  = $this->option_field_name . "[$field_id]";
+    $field_value = 1;
+    $check_attr  = checked( 1, $this->options[ $field_id ], false );
+
+    printf(
+      '<input type="checkbox" id="%s" name="%s" value="%s" %s />',
+      $field_id,
+      $field_name,
+      $field_value,
+      $check_attr
+    );
+  }
+
+  public function field_show_promptpay_id_callback() {
+    $field_id    = $this->field_key->field_show_promptpay_id;
+    $field_name  = $this->option_field_name . "[$field_id]";
+    $field_value = 1;
+    $check_attr  = checked( 1, $this->options[ $field_id ], false );
+
+    printf(
+      '<input type="checkbox" id="%s" name="%s" value="%s" %s />',
+      $field_id,
+      $field_name,
+      $field_value,
+      $check_attr
+    );
+  }
+
+  public function field_account_name_callback() {
+    $field_id    = $this->field_key->field_account_name;
+    $field_name  = $this->option_field_name . "[$field_id]";
+    $field_value = $this->options[ $field_id ];
+
+    printf( '<input type="text" id="%s" placeholder="Account name" name="%s" value="%s" />',
+      $field_id,
+      $field_name,
+      $field_value
+    );
+  }
+
+  public function field_shop_name_callback() {
+    $field_id    = $this->field_key->field_shop_name;
+    $field_name  = $this->option_field_name . "[$field_id]";
+    $field_value = $this->options[ $field_id ];
+
+    printf( '<input type="text" id="%s" placeholder="Shop name" name="%s" value="%s" />',
+      $field_id,
+      $field_name,
+      $field_value
+    );
   }
 
   /** ================================================================ backend: plugin

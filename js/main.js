@@ -56,21 +56,21 @@ const testItems = [
   {
     amount: 0
   },
-  // promptpayLogo: true
+  // promptpayLogo: 1
   {
-    showPromptpayLogo: true
+    showPromptpayLogo: 1
   },
-  // promptpayLogo: false
+  // promptpayLogo: 0
   {
-    showPromptpayLogo: false
+    showPromptpayLogo: 0
   },
-  // showPromptpayId: true
+  // showPromptpayId: 1
   {
-    showPromptpayId: true
+    showPromptpayId: 1
   },
-  // showPromptpayId: false
+  // showPromptpayId: 0
   {
-    showPromptpayId: false
+    showPromptpayId: 0
   },
   // accountName: 'Nathachai Thongniran'
   {
@@ -106,29 +106,29 @@ const testItems = [
   },
   // all meta
   {
-    showPromptpayId: true,
+    showPromptpayId: 1,
     accountName: 'Nathachai Thongniran',
     shopName: 'Jojoee shop'
   },
   // all meta (long)
   {
-    showPromptpayId: true,
+    showPromptpayId: 1,
     accountName: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ipsum laboriosam nam quod vero voluptate. Accusamus autem beatae dolorum ea ipsa ipsam iure magni nostrum obcaecati, quo quos tempora tempore?',
     shopName: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ipsum laboriosam nam quod vero voluptate. Accusamus autem beatae dolorum ea ipsa ipsam iure magni nostrum obcaecati, quo quos tempora tempore'
   },
   // style 1, all (default card style)
   {
     amount: 20.50,
-    showPromptpayLogo: true,
-    showPromptpayId: true,
+    showPromptpayLogo: 1,
+    showPromptpayId: 1,
     accountName: 'Nathachai Thongniran',
     shopName: 'Jojoee shop'
   },
   // style 1, all
   {
     amount: 20.50,
-    showPromptpayLogo: true,
-    showPromptpayId: true,
+    showPromptpayLogo: 1,
+    showPromptpayId: 1,
     accountName: 'Nathachai Thongniran',
     shopName: 'Jojoee shop',
     cardStyle: 1
@@ -136,8 +136,8 @@ const testItems = [
   // style 2, all
   {
     amount: 20.50,
-    showPromptpayLogo: true,
-    showPromptpayId: true,
+    showPromptpayLogo: 1,
+    showPromptpayId: 1,
     accountName: 'Nathachai Thongniran',
     shopName: 'Jojoee shop',
     cardStyle: 2
@@ -145,8 +145,8 @@ const testItems = [
   // style 3, all
   {
     amount: 20.50,
-    showPromptpayLogo: true,
-    showPromptpayId: true,
+    showPromptpayLogo: 1,
+    showPromptpayId: 1,
     accountName: 'Nathachai Thongniran',
     shopName: 'Jojoee shop',
     cardStyle: 3
@@ -312,8 +312,8 @@ function getCardOption($card) {
   return new CardOption(
     $card.data(attrKey.promptpayId).toString(),
     parseFloat($card.data(attrKey.amount)),
-    ($card.data(attrKey.showPromptpayLogo) === true),
-    ($card.data(attrKey.showPromptpayId) === true),
+    ($card.data(attrKey.showPromptpayLogo) === 1),
+    ($card.data(attrKey.showPromptpayId) === 1),
     $card.data(attrKey.accountName).toString(),
     $card.data(attrKey.shopName).toString(),
     parseInt($card.data(attrKey.cardStyle))
