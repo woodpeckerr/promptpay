@@ -67,8 +67,8 @@ class PromptPay {
    */
 
   public function shortcode_qrcode() {
-    $options      = $this->options;
-    $html         = sprintf( '<div class="ppy-card"
+    $options = $this->options;
+    $html    = sprintf( '<div class="ppy-card"
       data-promptpay-id="%s"
       data-amount="%f"
       data-show-promptpay-logo="%s"
