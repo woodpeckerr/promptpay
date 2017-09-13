@@ -9,6 +9,7 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-zip": "^4.0.0",
+    "promise": "^8.0.1",
     "promptpay-qr": "^0.4.3",
     "qrcode": "^0.9.0",
     "webpack": "^3.5.6"

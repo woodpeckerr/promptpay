@@ -62,7 +62,7 @@ class PromptPay {
     $options      = $this->options;
     $promptpay_id = $options['field_promptpay_id'];
     $amount       = 0;
-    $html         = sprintf( '<div class="ppy-qrcode" data-promptpay-id="%s" data-amount="%f"></div>',
+    $html         = sprintf( '<div class="ppy-card" data-promptpay-id="%s" data-amount="%f"></div>',
       $promptpay_id,
       $amount
     );

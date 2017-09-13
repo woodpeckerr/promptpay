@@ -1,15 +1,112 @@
+/** ================================================================ backend
+ */
+
 .ppy-input-desc {
   padding-top: 4px;
   padding-left: 4px;
   color: #afafaf;
 }
 
+/** ================================================================ common
+ */
+
+.ppy-card {
+  padding: 20px;
+  width: 360px;
+  font-family: 'Open Sans', helvetica, arial, sans-serif;
+}
+
 .ppy-qrcode {
   max-width: 340px;
   max-height: 340px;
+  display: block;
+  margin: auto;
 }
 
 .ppy-qrcode svg {
   width: 100%;
   height: 100%;
+}
+
+.ppy-logo {
+  height: 126px;
+  width: 360px;
+  text-align: center;
+  margin: auto;
+  background-image: url("../image/promptpay.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.ppy-head {
+  display: none;
+}
+
+.ppy-meta {
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ppy-meta-line {
+  display: inline-block;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+/** ================================================================ style
+ */
+
+/* shadow */
+.ppy-card.ppy-style1 {
+  /* shadow */
+  -webkit-box-shadow: 0px 0px 10px 4px rgba(230, 230, 230, 0.4);
+  box-shadow: 0px 0px 10px 4px rgba(230, 230, 230, 0.4);
+}
+
+/* color on meta */
+.ppy-card.ppy-style2 {
+  padding: 20px 0 0 0;
+  width: 400px;
+  border: 1px solid #003d6a;
+  border-radius: 6px;
+}
+
+.ppy-card.ppy-style2 .ppy-logo {
+  margin: 0 20px;
+}
+
+.ppy-card.ppy-style2 .ppy-meta {
+  padding: 18px;
+  background-color: #003d6a;
+  color: white;
+}
+
+/* empty */
+.ppy-card.ppy-style3 {
+  padding: 0;
+}
+
+/** ================================================================ test
+ */
+
+.ppy-test {
+  padding: 12px;
+}
+
+.ppy-test .ppy-card {
+  float: left;
+  margin: 8px;
+}
+
+.ppy-test .ppy-head {
+  background-color: whitesmoke;
+  border: 1px solid #d0d0d0;
+  font-size: 14px;
+  /*display: block;*/
+  display: none;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  padding: 20px;
 }

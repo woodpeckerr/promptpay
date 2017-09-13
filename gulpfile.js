@@ -17,6 +17,7 @@ gulp.task('clean', function () {
 gulp.task('pack', ['clean'], function () {
   return gulp.src([
     'css/**',
+    'image/promptpay.jpg',
     'js/main.min.js',
     'promptpay.php',
     'readme.txt',
