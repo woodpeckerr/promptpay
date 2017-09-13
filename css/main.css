@@ -58,25 +58,25 @@
  */
 
 /* shadow */
-.ppy-card.ppy-style1 {
+.ppy-card.ppy-style2 {
   /* shadow */
   -webkit-box-shadow: 0px 0px 10px 4px rgba(230, 230, 230, 0.4);
   box-shadow: 0px 0px 10px 4px rgba(230, 230, 230, 0.4);
 }
 
 /* color on meta */
-.ppy-card.ppy-style2 {
+.ppy-card.ppy-style1 {
   padding: 20px 0 0 0;
   width: 400px;
   border: 1px solid #003d6a;
   border-radius: 6px;
 }
 
-.ppy-card.ppy-style2 .ppy-logo {
+.ppy-card.ppy-style1 .ppy-logo {
   margin: 0 20px;
 }
 
-.ppy-card.ppy-style2 .ppy-meta {
+.ppy-card.ppy-style1 .ppy-meta {
   padding: 18px;
   background-color: #003d6a;
   color: white;
