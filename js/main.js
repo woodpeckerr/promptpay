@@ -299,11 +299,7 @@ function render($card, opt) {
       console.log('err', err);
     })
     .finally(function () {
-      // https://stackoverflow.com/questions/24059268/removing-all-dynamic-data-attributes-of-an-element
-      // remove all data attrs
-      jQuery.each($card.data(), function (i) {
-        $card.removeAttr('data-' + i);
-      });
+
     })
 }
 
@@ -324,6 +320,15 @@ function getCardOption($card) {
   )
 }
 
+/**
+ * @param {jQuery} $card
+ */
+function removeAllDataAttrs($card) {
+  Object.keys(attrKey).forEach((id) => {
+    $card.removeAttr('data-' + attrKey[id])
+  })
+}
+
 function initFrontend() {
   /** @type {jQuery} */
   const $cards = jQuery('.ppy-card');
@@ -332,6 +337,10 @@ function initFrontend() {
   jQuery.each($cards, function () {
     const $card = jQuery(this);
     const opt = getCardOption($card);
+
+    // remove data attrs
+    removeAllDataAttrs($card)
+
     if (opt.promptpayId) render($card, opt);
   });
 }
