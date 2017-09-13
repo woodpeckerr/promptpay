@@ -21,7 +21,8 @@ gulp.task('pack', ['clean'], function () {
     'js/main.min.js',
     'promptpay.php',
     'readme.txt',
-    'screenshot-1.jpg'
+    'screenshot-1.jpg',
+    'screenshot-2.jpg'
   ], {base: '.'})
     .pipe(gulp.dest(packageFolderName));
 });

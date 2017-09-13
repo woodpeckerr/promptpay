@@ -94,6 +94,13 @@
   padding: 0;
 }
 
+/** ================================================================ woocommerce-order-details
+ */
+
+.woocommerce-order-details .ppy-card {
+  margin-bottom: 40px;
+}
+
 /** ================================================================ test
  */
 

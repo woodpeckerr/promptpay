@@ -61,6 +61,26 @@ class PromptPay {
 
     // shortcode
     add_shortcode( 'promptpayqr', array( $this, 'shortcode_qrcode' ) );
+
+    // WooCommerce
+    add_action( 'woocommerce_order_details_after_order_table', array( $this, 'order_details_after_order_table' ) );
+  }
+
+  /** ================================================================ WooCommerce
+   */
+
+  /**
+   * @todo refactor
+   *
+   * @param WC_Order $order
+   */
+  public function order_details_after_order_table( $order ) {
+    $payment_method = $order->get_payment_method();
+    $total          = $order->get_total();
+    if ( $payment_method === 'bacs' ) {
+      // temporary
+      echo $this->shortcode_qrcode();
+    }
   }
 
   /** ================================================================ shortcode
