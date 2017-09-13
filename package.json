@@ -1,10 +1,14 @@
 {
   "scripts": {
-    "build.watch": "webpack js/main.js js/main.min.js -d --watch",
-    "build.prod": "webpack js/main.js js/main.min.js -p",
+    "build.watch": "webpack --config webpack.dev.js --watch",
+    "build.prod": "webpack --config webpack.prod.js",
     "zip": "gulp pack.zip"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "fs": "^0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
@@ -12,6 +16,7 @@
     "promise": "^8.0.1",
     "promptpay-qr": "^0.4.3",
     "qrcode": "^0.9.0",
-    "webpack": "^3.5.6"
+    "webpack": "^3.5.6",
+    "webpack-merge": "^4.1.0"
   }
 }
