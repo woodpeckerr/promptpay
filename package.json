@@ -1,7 +1,8 @@
 {
   "scripts": {
     "build.watch": "webpack js/main.js js/main.min.js -d --watch",
-    "build.prod": "webpack js/main.js js/main.min.js -p"
+    "build.prod": "webpack js/main.js js/main.min.js -p",
+    "zip": "gulp pack.zip"
   },
   "dependencies": {
     "fs": "^0.0.1-security",
