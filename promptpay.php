@@ -11,6 +11,10 @@ License: GPL2+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
+if ( ! defined( 'ABSPATH' ) ) {
+  exit; // Exit if accessed directly
+}
+
 define( 'PPY_BASE_FILE', plugin_basename( __FILE__ ) );
 define( 'PPY_PLUGIN_NAME', 'PromptPay' );
 
