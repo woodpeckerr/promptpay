@@ -3,7 +3,7 @@
 Plugin Name: PromptPay
 Plugin URI: https://wordpress.org/plugins/promptpay/
 Description: PromptPay integration for WordPress
-Version: 1.1.0
+Version: 1.2.0
 Author: Nathachai Thongniran
 Author URI: http://jojoee.com/
 Text Domain: ppy
