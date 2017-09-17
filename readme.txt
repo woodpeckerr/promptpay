@@ -88,8 +88,7 @@ Not available
 * [ ] Localization: Thai
 * [ ] Live preview Shortcode on admin page
 * [ ] Live preview: debounce when it's changed
-* [x] Live preview: live validate
-* [ ] Security: using PHP encode id into page then javascript decode it
+* [ ] Live preview: live validate
 * [ ] Support on IE 7-8
 * [ ] Unit test: PHP
 * [ ] Unit test: Javascript
