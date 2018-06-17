@@ -56,7 +56,7 @@
 }
 
 .ppy-meta-line {
-  display: inline-block;
+  display: block;
   line-height: 24px;
   white-space: nowrap;
 }
