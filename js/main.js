@@ -279,6 +279,11 @@ function render($card, opt) {
         metaHtml += '<span class="ppy-meta-line">PromptPay ID: ' + opt.promptpayId + '</span>';
       }
 
+      // amount
+      if (opt.amount) {
+        metaHtml += '<span class="ppy-meta-line">Amount: ' + opt.amount + '</span>';
+      }
+
       // account name
       if (opt.accountName) {
         metaHtml += '<span class="ppy-meta-line">Account name: ' + opt.accountName + '</span>';

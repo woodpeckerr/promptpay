@@ -86,9 +86,23 @@ class PromptPay {
   /** ================================================================ shortcode
    */
 
-  public function shortcode_qrcode() {
+  /**
+   * @see https://codex.wordpress.org/Shortcode_API
+   *
+   * @param array $atts
+   *
+   * @return array|string
+   */
+  public function shortcode_qrcode( $atts = [] ) {
     $options = $this->options;
-    $html    = sprintf( '<div class="ppy-card"
+
+    // custom param
+    $custom = shortcode_atts( array(
+      'id'     => $options[ $this->field_key->field_promptpay_id ],
+      'amount' => 0
+    ), $atts );
+
+    $html = sprintf( '<div class="ppy-card"
       data-promptpay-id="%s"
       data-amount="%f"
       data-show-promptpay-logo="%s"
@@ -97,8 +111,8 @@ class PromptPay {
       data-shop-name="%s"
       data-card-style="%s"
       ></div>',
-      $options[ $this->field_key->field_promptpay_id ],
-      0,
+      $custom['id'],
+      $custom['amount'],
       $options[ $this->field_key->field_show_promptpay_logo ],
       $options[ $this->field_key->field_show_promptpay_id ],
       $options[ $this->field_key->field_account_name ],
