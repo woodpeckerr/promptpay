@@ -31,6 +31,7 @@ function dump(e) {
 /** ================================================================ test
  */
 
+// todo move test stuff
 const testIdentityNo = '1100400404123';
 const testMobileNumber = '0846612456';
 const testItems = [
@@ -152,9 +153,7 @@ const testItems = [
     cardStyle: 3
   },
   // style 1, only qrcode (default card style)
-  {
-
-  },
+  {},
   // style 1, only qrcode
   {
     cardStyle: 1
@@ -254,7 +253,7 @@ function render($card, opt) {
     .html(JSON.stringify(opt, null, 2));
 
   // update card style
-  $card.addClass('ppy-style' + opt.cardStyle)
+  $card.addClass('ppy-style' + opt.cardStyle);
 
   const $qrcode = jQuery('<div>', {class: 'ppy-qrcode'});
   const $logo = jQuery('<div>', {class: 'ppy-logo'});
@@ -339,7 +338,7 @@ function initFrontend() {
     const opt = getCardOption($card);
 
     // remove data attrs
-    removeAllDataAttrs($card)
+    removeAllDataAttrs($card);
 
     if (opt.promptpayId) render($card, opt);
   });
