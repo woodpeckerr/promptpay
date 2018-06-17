@@ -53,6 +53,10 @@ Not available
 
 == Changelog ==
 
+= 1.2.2 (17 Jun 2018) =
+* Support "id" attribute for Shortcode
+* Support "amount" attribute for Shortcode
+
 = 1.2.0 (13 Sep 2017) =
 * Integration with BACS WooCommerce
 
@@ -64,7 +68,7 @@ Not available
 
 == TODO ==
 
-* [x] Screenshot
+* [ ] Update screenshot
 * [x] Integration with BACS WooCommerce
 * [x] Option: promptpay id
 * [ ] Option: amount
@@ -75,7 +79,8 @@ Not available
 * [x] Option: card style
 * [x] Option: integration with WooCommerce
 * [x] Shortcode
-* [ ] Shortcode: amount
+* [x] Shortcode: amount
+* [x] Shortcode: promptpay id
 * [ ] Shortcode: show promptpay logo
 * [ ] Shortcode: show promptpay id
 * [ ] Shortcode: account name

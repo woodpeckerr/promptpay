@@ -3,7 +3,7 @@
 Plugin Name: PromptPay
 Plugin URI: https://wordpress.org/plugins/promptpay/
 Description: PromptPay integration for WordPress
-Version: 1.2.1
+Version: 1.2.2
 Author: Nathachai Thongniran
 Author URI: http://jojoee.com/
 Text Domain: ppy
@@ -287,10 +287,9 @@ class PromptPay {
   }
 
   public function print_section_info() {
-    printf( '%s<br>%s<pre>%s</pre>',
-      'Enter your settings below',
-      'and display it by shortcode',
-      '[promptpayqr]'
+    print( 'Enter your settings below and display it by shortcode<br>
+      - default settings e.g. <code>[promptpayqr]</code><br>
+      - override default settings e.g. <code>[promptpayqr id="1100400404123"]</code>, <code>[promptpayqr amount="50.80"]</code>'
     );
   }
 
